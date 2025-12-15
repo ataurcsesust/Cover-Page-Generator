@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SUST Cover Page Generator</title>
+  <meta name="description" content="Official SUST Cover Sheet Generator • Shahjalal University of Science and Technology">
+  <meta name="keywords" content="SUST cover page, SUST assignment cover page, SUST cover sheet, SUST Cover Page Generator, SUST lab report cover page generator,SUST pdf generator">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="application-name" content="SUST Cover Page Generator">
+  <!-- Open Graph (Facebook / LinkedIn preview) -->
+  <meta property="og:site_name" content="SUST Cover Page Generator" />
+  <meta property="og:title" content="SUST Cover Page Generator">
+  <meta property="og:description" content="Instantly generate SUST assignment and lab report cover pages. Free tool for all SUST students.">
+  <meta property="og:image" content="https://mubarokkamil.github.io/SUST-Cover-Page-Generator/sust_logo.png">
+  <meta property="og:url" content="https://mubarokkamil.github.io/SUST-Cover-Page-Generator/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SUST Cover Page Generator">
+  <meta name="twitter:description" content="Generate official SUST cover pages instantly—free for all SUST students.">
+  <meta name="twitter:image" content="https://mubarokkamil.github.io/SUST-Cover-Page-Generator/sust_logo.png">
+
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://mubarokkamil.github.io/SUST-Cover-Page-Generator/">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPCRSKJK05"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-MPCRSKJK05');
+  </script>
+
+  <!-- Academic Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sust-navy: #0A2647;
+      --sust-blue: #003366;
+      --sust-gold: #D4AF37;
+      --border: #cbd5e1;
+      --shadow: 0 12px 35px rgba(10, 38, 71, 0.12);
+      --success: #2d6a4f;
+      --error: #9B1D41;
+      --green-btn: #2ea44f;
+      --green-btn-hover: #2c974b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #f5f7fa;
+      padding: 1rem;
+      line-height: 1.6;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* === Main Container & Page Visibility === */
+    .hidden {
+      display: none !important;
+    }
+    
+    .page-container {
+      max-width: 800px;
+      width: 100%;
+      margin: auto;
+      background: white;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+    }
+    
+    /* === Shared Header === */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid #e2e8f0;
+      background-color: #fdfdfd;
+    }
+    .header-logo { width: 60px; height: auto; flex-shrink: 0; }
+    .header-text { text-align: right; color: var(--sust-navy); }
+    .header-text h1 { font-family: 'EB Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 600; margin: 0; }
+    .header-text p { font-size: 0.9rem; opacity: 0.9; margin: 0; }
+
+
+    /* === Landing Page Styles === */
+    .landing-main { text-align: center; padding: 4rem 2rem; }
+    .landing-main h2 { font-family: 'EB Garamond', serif; font-size: 2.25rem; color: var(--sust-navy); margin-bottom: 1rem; }
+    .landing-main p { font-size: 1.125rem; color: #4a5568; max-width: 600px; margin: 0 auto 3rem auto; }
+    
+    .selection-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    
+    /* Box Styles for Initial Selection */
+    .selection-box { cursor: pointer; display: block; padding: 2rem; background-color: #f8fafc; border: 2px solid var(--border); border-radius: 0.75rem; text-decoration: none; color: var(--sust-blue); transition: all 0.3s ease; }
+    .selection-box:hover { border-color: var(--sust-gold); transform: translateY(-5px); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15); background-color: #fff; }
+    .selection-box h3 { font-family: 'EB Garamond', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .selection-box span { font-size: 1rem; color: #4a5568; }
+
+    /* === Template Selection Styles (New) === */
+    .template-img-box {
+      cursor: pointer;
+      border: 2px solid var(--border);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    .template-img-box img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #eee;
+    }
+    .template-img-box:hover {
+      border-color: var(--sust-gold);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+    }
+    .template-label {
+      padding: 0.75rem;
+      text-align: center;
+      font-weight: 600;
+      color: var(--sust-navy);
+      border-top: 1px solid #eee;
+      background: #fff;
+    }
+
+    /* === Generator Page Styles === */
+    .generator-main { padding: 2.5rem 1.5rem; }
+    .generator-main h3 { font-family: 'EB Garamond', serif; font-size: 1.75rem; color: var(--sust-navy); text-align: center; margin-bottom: 2.5rem; font-weight: 600; }
+    .form-grid { display: grid; grid-template-columns: 1fr; gap: 1.375rem; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2d3748; font-size: 0.9375rem; }
+    input { width: 100%; padding: 1rem 1.125rem; border: 2px solid var(--border); border-radius: 0.75rem; font-size: 0.9375rem; background: #fdfdfd; transition: all 0.3s ease; }
+    input:focus { outline: none; border-color: var(--sust-gold); box-shadow: 0 0 0 0.3125rem rgba(212, 175, 55, 0.15); background: white; }
+    input[type="date"] { font-family: 'Inter', sans-serif; }
+    
+    .field-group { padding: 1.5625rem; background: #f9fbfc; border-radius: 0.875rem; border: 1.5px dashed var(--border); margin-top: 1.5625rem; opacity: 0; max-height: 0; overflow: hidden; transition: all 0.5s ease-in-out; visibility: hidden; }
+    .field-group.visible { opacity: 1; max-height: 500px; border-style: solid; border-color: var(--sust-gold); background: #fefef9; visibility: visible; }
+    
+    /* Generator Button */
+    .button-container { margin-top: 2.1875rem; text-align: center; }
+    button { width: 100%; background: var(--sust-blue); color: white; padding: 1.125rem; border: none; border-radius: 0.75rem; font-size: 1.0625rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+    button:hover:not(:disabled) { background: #002b55; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 51, 102, 0.3); }
+    
+    /* === PDF Conversion Card Styles === */
+    .conversion-card {
+        background-color: #f1f5f9; /* Light gray/slate */
+        border: 1px solid #e2e8f0;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        text-align: center;
+        margin-top: 3rem;
+        color: #333;
+    }
+    .conversion-card-text {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: #1e293b;
+    }
+    .convert-btn {
+        background-color: var(--green-btn);
+        color: white;
+        padding: 0.85rem 1.75rem;
+        border-radius: 0.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+        font-size: 1rem;
+    }
+    .convert-btn:hover {
+        background-color: var(--green-btn-hover);
+        text-decoration: none;
+    }
+    .convert-btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Status & Footer */
+    #status { margin-top: 1.5rem; text-align: center; font-weight: 500; padding: 0.875rem; border-radius: 0.625rem; min-height: 3.5rem; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+    
+    .page-footer { text-align: center; padding: 2rem 1rem; color: #64748b; font-size: 0.875rem; }
+    .page-footer a { color: var(--sust-blue); text-decoration: none; font-weight: 500; }
+    .page-footer a:hover { text-decoration: underline; }
+    .back-link { cursor: pointer; margin-top: 1.5rem; display: inline-block; color: #64748b; transition: color 0.2s; }
+    .back-link:hover { color: var(--sust-blue); }
+
+
+    /* === Responsive Adjustments === */
+    @media (max-width: 480px) {
+        body { padding: 0.5rem; }
+        .header { padding: 1rem 1.5rem; }
+        .header-logo { width: 50px; }
+        .header-text h1 { font-size: 1.2rem; }
+        .header-text p { font-size: 0.8rem; }
+        .landing-main { padding: 2.5rem 1rem; }
+        .generator-main { padding: 2rem 1rem; }
+    }
+    @media (min-width: 768px) {
+      .selection-grid { grid-template-columns: 1fr 1fr; }
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .header-logo { width: 70px; }
+      .header-text h1 { font-size: 1.75rem; }
+      .generator-main { padding: 3.4375rem 4.375rem; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+ {
+   "@context": "https://schema.org",
+   "@type": "WebSite",
+   "name": "SUST Cover Page Generator",
+   "url": "https://mubarokkamil.github.io/SUST-Cover-Page-Generator/",
+   "alternateName": ["SUST Cover Page", "SUST Lab Report Cover", "SUST Assignment Cover", "sust cover page generator"],
+   "description": "Official cover page generator for SUST assignment and lab reports.",
+   "creator": {
+     "@type": "Person",
+     "name": "Mubarok Hossen Kamil"
+    }
+ }
+ </script>
+
+
+</head>
+<body>
+
+  <!-- 1. Landing Page Section (Category Selection) -->
+  <div id="landingPage" class="page-container">
+    <header class="header">
+      <img src="sust_logo.png" alt="SUST Logo" class="header-logo">
+      <div class="header-text">
+        <h1>SUST Cover Page Generator</h1>
+      </div>
+    </header>
+    <main class="landing-main">
+      <h2>Automated Assignment & Lab Report Cover Generator</h2>
+      <p>Please choose the type of cover page you would like to create.</p>
+            
+      <div class="selection-grid">
+        <div class="selection-box" data-category="lab">
+          <h3>Lab Report</h3>
+          <span>For practical courses and lab experiments.</span>
+        </div>
+        <div class="selection-box" data-category="assignment">
+          <h3>Assignment</h3>
+          <span>For theoretical courses and general assignments.</span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 2. Lab Template Selection Page (Hidden by default) -->
+  <div id="labTemplatePage" class="page-container hidden">
+    <header class="header">
+      <img src="sust_logo.png" alt="SUST Logo" class="header-logo">
+      <div class="header-text"><h1>Select Design</h1></div>
+    </header>
+    <main class="landing-main">
+        <h2>Choose Lab Report Template</h2>
+        <p>Select the design you prefer for your lab report.</p>
+        <div class="selection-grid">
+            <!-- Template 1 -->
+            <div class="template-img-box" data-type="lab" data-file="lab-template.docx">
+                <img src="lab-template.jpg" alt="Lab Template 1 Preview">
+                <div class="template-label">Design 1</div>
+            </div>
+            <!-- Template 2 -->
+            <div class="template-img-box" data-type="lab" data-file="lab-template-2.docx">
+                <img src="lab-template-2.jpg" alt="Lab Template 2 Preview">
+                <div class="template-label">Design 2</div>
+            </div>
+        </div>
+        <a class="back-link" data-target="landing">← Back to categories</a>
+    </main>
+  </div>
+
+  <!-- 3. Assignment Template Selection Page (Hidden by default) -->
+  <div id="assignmentTemplatePage" class="page-container hidden">
+    <header class="header">
+        <img src="sust_logo.png" alt="SUST Logo" class="header-logo">
+        <div class="header-text"><h1>Select Design</h1></div>
+      </header>
+      <main class="landing-main">
+          <h2>Choose Assignment Template</h2>
+          <p>Select the design you prefer for your assignment.</p>
+          <div class="selection-grid">
+              <!-- Template 1 -->
+              <div class="template-img-box" data-type="assignment" data-file="Assignment-template.docx">
+                  <img src="Assignment-template.jpg" alt="Assignment Template 1 Preview">
+                  <div class="template-label">Design 1</div>
+              </div>
+              <!-- Template 2 -->
+              <div class="template-img-box" data-type="assignment" data-file="Assignment-template-2.docx">
+                  <img src="Assignment-template-2.jpg" alt="Assignment Template 2 Preview">
+                  <div class="template-label">Design 2</div>
+              </div>
+          </div>
+          <a class="back-link" data-target="landing">← Back to categories</a>
+      </main>
+  </div>
+
+  <!-- 4. Generator Page Section (Initially Hidden) -->
+  <div id="generatorPage" class="page-container hidden">
+    <header class="header">
+      <img src="sust_logo.png" alt="SUST Logo" class="header-logo">
+      <div class="header-text">
+        <h1>Enter Details</h1>
+      </div>
+    </header>
+    <main class="generator-main">
+      <h3>Generate Your Official Cover Sheet</h3>
+      <form id="dataForm">
+        <!-- Hidden input to store the template file name -->
+        <input type="hidden" id="templateDocxFile" value="">
+
+        <div class="form-grid">
+          <!-- === Department List === -->
+          <div>
+            <label for="Dept_Name">Department</label>
+            <input type="text" id="Dept_Name" list="dept-list" required placeholder="e.g. Electrical and Electronic Engineering">
+            <datalist id="dept-list">
+              <option value="Anthropology">
+              <option value="Architecture">
+              <option value="Bangla">
+              <option value="Biochemistry and Molecular Biology">
+              <option value="Business Administration">
+              <option value="Chemical Engineering & Polymer Science">
+              <option value="Chemistry">
+              <option value="Civil & Environmental Engineering">
+              <option value="Computer Science & Engineering">
+              <option value="Economics">
+              <option value="Electrical & Electronic Engineering">
+              <option value="English">
+              <option value="Food Engineering & Tea Technology">
+              <option value="Forestry & Environmental Science">
+              <option value="Geography and Environment">
+              <option value="Genetic Engineering & Biotechnology">
+              <option value="Industrial & Production Engineering">
+              <option value="Mathematics">
+              <option value="Mechanical Engineering">
+              <option value="Oceanography">
+              <option value="Petroleum and Mining Engineering">
+              <option value="Physics">
+              <option value="Political Studies">
+              <option value="Public Administration">
+              <option value="Social Work">
+              <option value="Sociology">
+              <option value="Statistics">
+            </datalist>
+          </div>
+          <!-- ==================================== -->
+          <div><label for="Course_Code">Course Code</label><input type="text" id="Course_Code" required placeholder="e.g. EEE 322"></div>
+          <div><label for="Course_Title">Course Title</label><input type="text" id="Course_Title" required placeholder="e.g. Digital Signal Processing"></div>
+          <div><label for="Course_Teacher">Course Teacher</label><input type="text" id="Course_Teacher" required placeholder="e.g. Dr. Muhammad Mostafa Amir Faisal"></div>
+          <div><label for="Course_Teacher_Details">Teacher Designation</label><input type="text" id="Course_Teacher_Details" placeholder="e.g. Professor, Dept. of EEE, SUST"></div>
+          <div><label for="Reg_No">Registration No.</label><input type="text" id="Reg_No" required placeholder="e.g. 2020331024"></div>
+          <div><label for="Name">Student Name</label><input type="text" id="Name" required placeholder="e.g. Mohammad"></div>
+          
+          <!-- Date Picker -->
+          <div>
+              <label for="Submission_Date">Date of Submission</label>
+              <input type="date" id="Submission_Date" required>
+          </div>
+          
+        </div>
+
+        <div id="labFields" class="field-group">
+          <div class="form-grid">
+            <div>
+              <label for="Exp_No">Experiment No.</label>
+              <input type="text" id="Exp_No" placeholder="e.g. 01">
+            </div>
+            <div>
+              <label for="Group_No">Group No</label>
+              <input type="text" id="Group_No" placeholder="e.g. Group A">
+            </div>
+            <div style="grid-column: 1 / -1;">
+              <label for="Exp_Name">Experiment Name</label>
+              <input type="text" id="Exp_Name" placeholder="e.g. Study of RC Circuit">
+            </div>
+          </div>
+        </div>
+
+        <div id="assignmentFields" class="field-group"><div class="form-grid"><div style="grid-column: 1 / -1;"><label for="Assignment_Name">Assignment Title</label><input type="text" id="Assignment_Name" placeholder="e.g. Assignment on Fourier Transform"></div></div></div>
+        
+        <!-- Main Generation Button -->
+        <div class="button-container">
+          <button type="submit" id="generateDocxButton">Generate Cover Page (DOCX)</button>
+        </div>
+        
+      </form>
+      <div id="status"></div>
+      
+      <!-- New PDF Converter Section -->
+      <div class="conversion-card">
+        <div class="conversion-card-text">Need PDF format? Use an online converter.</div>
+        <a href="https://www.ilovepdf.com/word_to_pdf" target="_blank" class="convert-btn">Convert DOCX to PDF</a>
+      </div>
+      
+      <!-- Back to Start -->
+      <div style="text-align: center;">
+          <a class="back-link" data-target="landing">← Back to selection</a>
+      </div>
+
+    </main>
+  </div>
+  
+ <footer class="page-footer">
+    <p>Developed by <strong>Mubarok Hossen Kamil</strong> • EEE, SUST • Session 2022-23</p>
+</footer>
+
+  <!-- Libraries -->
+  <script src="https://unpkg.com/pizzip@3.1.7/dist/pizzip.js"></script>
+  <script src="https://unpkg.com/docxtemplater@3.30.1/build/docxtemplater.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Pages
+      const landingPage = document.getElementById('landingPage');
+      const labTemplatePage = document.getElementById('labTemplatePage');
+      const assignmentTemplatePage = document.getElementById('assignmentTemplatePage');
+      const generatorPage = document.getElementById('generatorPage');
+
+      // Controls
+      const categoryButtons = document.querySelectorAll('.selection-box'); // Landing page buttons
+      const templateButtons = document.querySelectorAll('.template-img-box'); // Template selection buttons
+      const backLinks = document.querySelectorAll('.back-link');
+      
+      // Form elements
+      const form = document.getElementById('dataForm');
+      const hiddenTemplateDocxInput = document.getElementById('templateDocxFile');
+      const labFields = document.getElementById('labFields');
+      const assignmentFields = document.getElementById('assignmentFields');
+      const status = document.getElementById('status');
+      const generateDocxButton = document.getElementById('generateDocxButton');
+
+
+      // --- Navigation Functions ---
+
+      function hideAllPages() {
+        landingPage.classList.add('hidden');
+        labTemplatePage.classList.add('hidden');
+        assignmentTemplatePage.classList.add('hidden');
+        generatorPage.classList.add('hidden');
+      }
+
+      function showLanding() {
+        hideAllPages();
+        landingPage.classList.remove('hidden');
+        window.scrollTo(0, 0);
+      }
+
+      function showTemplateSelection(category) {
+        hideAllPages();
+        if (category === 'lab') {
+            labTemplatePage.classList.remove('hidden');
+        } else if (category === 'assignment') {
+            assignmentTemplatePage.classList.remove('hidden');
+        }
+        window.scrollTo(0, 0);
+      }
+
+      // Function to show the generator page
+      function showGenerator(type, templateFile) {
+        hideAllPages();
+        form.reset();
+        status.innerHTML = '';
+        status.style.backgroundColor = '';
+        
+        // Set the chosen template file
+        hiddenTemplateDocxInput.value = templateFile;
+
+        // Toggle fields based on type
+        labFields.classList.remove('visible');
+        assignmentFields.classList.remove('visible');
+
+        if (type === 'lab') {
+          labFields.classList.add('visible');
+        } else if (type === 'assignment') {
+          assignmentFields.classList.add('visible');
+        }
+
+        generatorPage.classList.remove('hidden');
+        window.scrollTo(0, 0);
+      }
+
+      // --- Event Listeners ---
+
+      // 1. Landing Page Category Selection
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const category = button.getAttribute('data-category');
+          showTemplateSelection(category);
+        });
+      });
+
+      // 2. Template Image Selection
+      templateButtons.forEach(button => {
+          button.addEventListener('click', () => {
+              const type = button.getAttribute('data-type'); // 'lab' or 'assignment'
+              const file = button.getAttribute('data-file'); // 'lab-template.docx', etc.
+              showGenerator(type, file);
+          });
+      });
+
+      // 3. Back Buttons
+      backLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+              // Simply go back to landing page for simplicity in this flow
+              showLanding(); 
+          });
+      });
+
+
+      // --- Helper: Date Formatter ---
+      const formatDateString = (dateStr) => {
+        if (!dateStr) return "";
+        const parts = dateStr.split("-");
+        const year = parts[0];
+        const monthIndex = parseInt(parts[1], 10) - 1; 
+        const day = parseInt(parts[2], 10);
+
+        const months = [
+          "January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ];
+        
+        const getOrdinal = (n) => {
+            if (n > 3 && n < 21) return 'th';
+            switch (n % 10) {
+                case 1:  return "st";
+                case 2:  return "nd";
+                case 3:  return "rd";
+                default: return "th";
+            }
+        };
+
+        return `${day}${getOrdinal(day)} ${months[monthIndex]}, ${year}`;
+      };
+
+      // --- Helper: Collect Form Data ---
+      const getFormData = () => {
+        const rawDate = document.getElementById('Submission_Date').value;
+        
+        return {
+          Dept_Name: document.getElementById('Dept_Name').value.trim(),
+          Course_Code: document.getElementById('Course_Code').value.trim(),
+          Course_Title: document.getElementById('Course_Title').value.trim(),
+          Course_Teacher: document.getElementById('Course_Teacher').value.trim(),
+          Course_Teacher_Details: document.getElementById('Course_Teacher_Details').value.trim(),
+          Reg_No: document.getElementById('Reg_No').value.trim(),
+          Name: document.getElementById('Name').value.trim(),
+          Submission_Date: formatDateString(rawDate),
+          
+          // Lab Specific
+          Exp_No: document.getElementById('Exp_No')?.value.trim() || '',
+          Group_No: document.getElementById('Group_No')?.value.trim() || '',
+          Exp_Name: document.getElementById('Exp_Name')?.value.trim() || '',
+          // Assignment Specific
+          Assignment_Name: document.getElementById('Assignment_Name')?.value.trim() || ''
+        };
+      };
+
+      const updateStatus = (message, type) => {
+        status.innerHTML = message;
+        if (type === 'success') {
+          status.style.color = 'var(--success)';
+          status.style.backgroundColor = 'rgba(45, 106, 79, 0.1)';
+        } else if (type === 'error') {
+          status.style.color = 'var(--error)';
+          status.style.backgroundColor = 'rgba(155, 29, 65, 0.1)';
+        } else {
+          status.style.color = 'var(--sust-blue)';
+          status.style.backgroundColor = '';
+        }
+      };
+
+
+      // --- DOCX Generation ---
+      generateDocxButton.addEventListener('click', async (e) => {
+        e.preventDefault(); 
+        status.innerHTML = '<em>Generating DOCX cover page...</em>';
+        status.style.color = 'var(--sust-blue)';
+        status.style.backgroundColor = '';
+
+        const templateDocxFile = hiddenTemplateDocxInput.value;
+        if (!templateDocxFile) {
+            updateStatus('Error: No DOCX template selected. Please go back.', 'error');
+            return;
+        }
+
+        const data = getFormData();
+        if (!form.checkValidity()) {
+          form.reportValidity(); 
+          updateStatus('Please fill in all required fields.', 'error');
+          return;
+        }
+
+        try {
+          const response = await fetch(templateDocxFile);
+          if (!response.ok) throw new Error('DOCX template file not found.');
+          
+          const content = await response.arrayBuffer();
+          const zip = new PizZip(content);
+          const doc = new docxtemplater(zip, { paragraphLoop: true, linebreaks: true });
+          doc.render(data);
+
+          const blob = doc.getZip().generate({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+          const isLabReport = templateDocxFile.includes('lab');
+          const fileName = isLabReport
+            ? `Lab_Report_${data.Reg_No}_${data.Exp_Name || 'Experiment'}.docx`
+            : `Assignment_${data.Reg_No}_${data.Course_Code}.docx`;
+
+          saveAs(blob, fileName.replace(/[^a-zA-Z0-9_-]/g, '_'));
+
+          updateStatus('DOCX cover page generated & downloaded successfully!', 'success');
+
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_cover_page', {
+              'document_type': isLabReport ? 'Lab Report (DOCX)' : 'Assignment (DOCX)',
+              'department': data.Dept_Name,
+              'template': templateDocxFile
+            });
+          }
+
+        } catch (err) {
+          console.error(err);
+          updateStatus('Error generating DOCX: ' + err.message, 'error');
+        }
+      });
+
+    });
+  </script>
+
+</body>
+</html>
